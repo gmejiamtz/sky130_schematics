@@ -5,12 +5,15 @@ ARG INSTALL_ZSH="true"
 
 RUN apt-get update
 
-RUN apt-get -y install git cmake ngspice magic netgen libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev
+RUN apt-get -y install git cmake ngspice netgen libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev 
 
 #INSTALL xschem
-RUN cd /opt &&  git clone https://github.com/StefanSchippers/xschem.git xschem-src && cd xschem-src && ./configure && make -j
+RUN cd /opt && git clone https://github.com/StefanSchippers/xschem.git xschem-src && cd xschem-src && ./configure && make -j
+
+#Install magic from source
+RUN cd /opt && git clone https://github.com/RTimothyEdwards/magic.git magic_src && cd magic_src && ./configure --prefix=/opt/magic && make -j && make install
 
 #INSTALL PDK
-RUN cd /opt && git clone git://opencircuitdesign.com/open_pdks pdk && cd pdk && ./configure --prefix=/opt/open_pdks --enable-sky130-pdk --with-sky130-variants=A --enable-primitive-sky130 --disable-io-sky130 --disable-sc-hs-sky130 --disable-sc-ms-sky130 --disable-sc-ls-sky130 --disable-sc-lp-sky130 --enable-sc-hd-sky130 --disable-sc-hdll-sky130 --disable-sc-hvl-sky130 --disable-alpha-sky130 --enable-xschem-sky130 --disable-sram-sky130 --disable-osu-t12-sky130 --disable-osu-t15-sky130 --disable-osu-t18-sky130 && make -j && make install
+RUN alias magic="/opt/magic/bin/./magic" && cd /opt && git clone git://opencircuitdesign.com/open_pdks pdk && cd pdk && ./configure --prefix=/opt/open_pdks --enable-sky130-pdk --with-sky130-variants=A --enable-primitive-sky130 --disable-io-sky130 --disable-sc-hs-sky130 --disable-sc-ms-sky130 --disable-sc-ls-sky130 --disable-sc-lp-sky130 --enable-sc-hd-sky130 --disable-sc-hdll-sky130 --disable-sc-hvl-sky130 --disable-alpha-sky130 --enable-xschem-sky130 --disable-sram-sky130 --disable-osu-t12-sky130 --disable-osu-t15-sky130 --disable-osu-t18-sky130 && make -j && make install && make veryclean
 
 RUN echo "Done"

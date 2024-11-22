@@ -29,6 +29,9 @@ RUN cd /opt && git clone git://opencircuitdesign.com/open_pdks pdk && cd pdk && 
 --disable-sram-sky130 \
 --disable-osu-t12-sky130 \
 --disable-osu-t15-sky130 \
---disable-osu-t18-sky130 && make -j && make install && make veryclean
+--disable-osu-t18-sky130 \
+make -j \
+make install \
+make veryclean
 
 RUN echo "Done"

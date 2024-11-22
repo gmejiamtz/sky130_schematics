@@ -5,7 +5,7 @@ ARG INSTALL_ZSH="true"
 
 RUN apt-get update
 
-RUN apt-get -y install git cmake ngspice netgen libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev 
+RUN apt-get -y install git cmake libtool-dev libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev 
 
 RUN mkdir /tools
 
@@ -16,10 +16,10 @@ RUN cd /tools && git clone https://github.com/RTimothyEdwards/magic.git magic_sr
 RUN cd /tools && git clone https://github.com/StefanSchippers/xschem.git xschem-src && cd xschem-src && ./configure --prefix=/tools/xschem && make -j && make install
 
 #ngspice install
-RUN cd /tools git clone git://git.code.sf.net/p/ngspice/ngspice spice && spice && mkdir -p build && ./autogen.sh && cd build &&  ../configure --prefix=/tools/ngspice --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes --enable-openmp --enable-osdi && make -j && make install
+RUN cd /tools && git clone git://git.code.sf.net/p/ngspice/ngspice spice && cd spice && mkdir -p build && ./autogen.sh && cd build &&  ../configure --prefix=/tools/ngspice --with-x --enable-xspice --disable-debug --enable-cider --with-readline=yes --enable-openmp --enable-osdi && make -j && make install
 
 #netgen install
-RUN git clone https://github.com/RTimothyEdwards/netgen.git lvs && cd lvs && ./configure --prefix=/tools/netgen && make -j && make install
+RUN cd /tools && git clone https://github.com/RTimothyEdwards/netgen.git lvs && cd lvs && ./configure --prefix=/tools/netgen && make -j && make install
 
 #INSTALL PDK
 ENV PATH="$PATH:/tools/magic/bin"

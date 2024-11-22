@@ -11,8 +11,8 @@ RUN apt-get -y install git cmake ngspice magic netgen libx11-dev libxrender-dev 
 RUN cd /opt &&  git clone https://github.com/StefanSchippers/xschem.git xschem-src && cd xschem-src && ./configure && make -j
 
 #INSTALL PDK
-RUN cd /opt && git clone git://opencircuitdesign.com/open_pdks && cd open_pdks && ./configure \
---prefix=${{ env.tools }}/open_pdks \
+RUN cd /opt && git clone git://opencircuitdesign.com/open_pdks pdk && cd pdk && ./configure \
+--prefix=/opt/open_pdks \
 --enable-sky130-pdk \
 --with-sky130-variants=A \
 --enable-primitive-sky130 \

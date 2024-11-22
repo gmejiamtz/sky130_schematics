@@ -5,7 +5,7 @@ ARG INSTALL_ZSH="true"
 
 RUN apt-get update
 
-RUN apt-get -y install git cmake libtool libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev libxaw-dev 
+RUN apt-get -y install git cmake libtool libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev libxaw7-dev libreadline6-dev
 
 RUN mkdir /tools
 

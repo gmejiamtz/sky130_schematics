@@ -9,11 +9,8 @@ echo "PATH=$PATH"
 curr=$(pwd)
 echo "$curr"
 cd ..
-echo "Running LVS" >> "$GITHUB_OUTPUT"
 make all_lvs
 if [ $? -neq  0]; then exit 1 fi
-echo "Running SVG Generation" >> "$GITHUB_OUTPUT"
 make all_svg
 if [ $? -neq  0]; then exit 1 fi
-echo "Success" >> "$GITHUB_OUTPUT"
 exit 0

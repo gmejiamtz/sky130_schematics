@@ -6,11 +6,11 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Runs all make tests using the Codespaces Dockerfile
     steps:
       - name: Hello world action step
-        id: hello
-        uses: gmejiamtz/sky130_schematics
+        id: test
+        uses: gmejiamtz/sky130_schematics@2024.11.23.08.53
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "Log: ${{ steps.test.outputs.log }}"

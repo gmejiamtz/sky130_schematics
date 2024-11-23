@@ -1,0 +1,9 @@
+name: Starting Docker Image
+description: Runs the Dockerfile for sky130_schematics and runs all make tests
+author: gmejiamtz
+outputs:
+  log: # id of output
+    description: "Output of entry point script"
+runs:
+  using: "docker"
+  image: "Dockerfile"

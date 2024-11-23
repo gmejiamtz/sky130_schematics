@@ -6,8 +6,7 @@
 #export PDK_ROOT="/tools/open_pdks/share/pdk"
 #echo "PDK_ROOT=$PDK_ROOT"
 echo "PATH=$PATH"
-curr=$(pwd)
-echo "$curr"
+$(pwd)
 cd ..
 make all_lvs
 if [ $? -neq  0]; then exit 1 fi

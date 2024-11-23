@@ -13,6 +13,8 @@ jobs:
         ports:
           - 5001:5000
 
+    env:
+      TEST_TAG: localhost:5001/gmejiamtz/sky130_schematics:latest
     steps:
       - name: Checkout
         id: checkout
@@ -29,9 +31,10 @@ jobs:
         with:
           context: .
           push: true
+          tags: ${{ env.TEST_TAG }}
       - name: Run the Container
         id: run
-        run: docker run
+        run: docker run --rm ${{ env.TEST_TAG }}
 
   test-container:
     runs-on: ubuntu-latest

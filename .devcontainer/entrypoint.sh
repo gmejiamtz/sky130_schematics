@@ -6,7 +6,7 @@
 #export PDK_ROOT="/tools/open_pdks/share/pdk"
 #echo "PDK_ROOT=$PDK_ROOT"
 echo "PATH=$PATH"
-curr=pwd
+curr=$(pwd)
 echo "$curr"
 cd ..
 echo "Running LVS" >> "$GITHUB_OUTPUT"

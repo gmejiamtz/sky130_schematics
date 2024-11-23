@@ -6,5 +6,5 @@ if [ $? -neq  0]; then exit 1
 echo "Running SVG Generation"
 make all_svg
 if [ $? -neq  0]; then exit 1
-echo "Success"
+echo "Success!"
 exit 0

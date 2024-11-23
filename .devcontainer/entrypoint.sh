@@ -6,8 +6,7 @@
 #export PDK_ROOT="/tools/open_pdks/share/pdk"
 #echo "PDK_ROOT=$PDK_ROOT"
 echo "PATH=$PATH"
-$(pwd)
-cd ..
+cd /workspace/sky130_schematics
 make all_lvs
 if [ $? -neq  0]; then exit 1 fi
 make all_svg

@@ -4,40 +4,6 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  build-docker:
-    name: Build Docker
-    runs-on: ubuntu-latest
-    services:
-      registry:
-        image: registry:2
-        ports:
-          - 5001:5000
-
-    env:
-      TEST_TAG: localhost:5001/gmejiamtz/sky130_schematics:latest
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-      - name: Setup Docker BuildX
-        id: setup-buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          install: true
-          driver-opts: network=host
-          driver: docker
-      - name: Build the Container
-        id: build
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          file: .devcontainer/Dockerfile
-          tags: ${{ env.TEST_TAG }}
-      - name: Run the Container
-        id: run
-        run: docker run ${{ env.TEST_TAG }}
-
   test-container:
     runs-on: ubuntu-latest
     name: Runs all make tests using the Codespaces Dockerfile

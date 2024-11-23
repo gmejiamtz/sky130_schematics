@@ -7,6 +7,7 @@
 #echo "PDK_ROOT=$PDK_ROOT"
 echo "PATH=$PATH"
 cd /workspaces/sky130_schematics
+ls 
 make all_lvs
 if [ $? -neq  0]; then exit 1 fi
 make all_svg

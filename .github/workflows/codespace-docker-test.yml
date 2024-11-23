@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Id Test Step
         id: test
-        uses: gmejiamtz/sky130_schematics/.devcontainer@2024.11.23.11.27
+        uses: gmejiamtz/sky130_schematics/.devcontainer@main
       - run: echo "${{ steps.test.outputs.log }}"

@@ -32,7 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          file: ../.devcontainer/Dockerfile
+          file: .devcontainer/Dockerfile
           tags: ${{ env.TEST_TAG }}
       - name: Run the Container
         id: run

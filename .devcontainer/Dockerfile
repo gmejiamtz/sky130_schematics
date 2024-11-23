@@ -7,10 +7,10 @@ RUN apt-get update
 
 WORKDIR /workspaces/sky130_schematics/
 COPY entrypoint.sh .
-COPY scripts .
-COPY schematics .
-COPY Makefile .
-COPY xschemrc .
+ADD ../scripts .
+ADD ../schematics .
+COPY ../Makefile .
+COPY ../xschemrc .
 ENTRYPOINT ["/workspaces/sky130_schematics/entrypoint.sh"]
 #RUN apt-get -y install git cmake libtool libx11-dev libxrender-dev libx11-dev libcairo-dev tcl-dev tk-dev bison flex libxpm-dev m4 mesa-common-dev libgl-dev libglu1-mesa-dev zlib1g-dev libncurses-dev libxaw7-dev libreadline6-dev
 

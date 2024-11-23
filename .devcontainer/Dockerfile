@@ -28,6 +28,4 @@ ENV PATH="$PATH:/tools/ngspice/bin"
 ENV PATH="$PATH:/tools/xschem/bin"
 RUN cd /tools && git clone git://opencircuitdesign.com/open_pdks pdk && cd pdk && ./configure --prefix=/tools/open_pdks --enable-sky130-pdk --with-sky130-variants=A --enable-primitive-sky130 --disable-io-sky130 --disable-sc-hs-sky130 --disable-sc-ms-sky130 --disable-sc-ls-sky130 --disable-sc-lp-sky130 --enable-sc-hd-sky130 --disable-sc-hdll-sky130 --disable-sc-hvl-sky130 --disable-alpha-sky130 --enable-xschem-sky130 --disable-sram-sky130 --disable-osu-t12-sky130 --disable-osu-t15-sky130 --disable-osu-t18-sky130 && make -j && make install && make veryclean
 
-WORKDIR /workspaces/sky130_schematics
-COPY entrypoint.sh .
-ENTRYPOINT [".workspaces/sky130_schematics/entrypoint.sh"]
+ENTRYPOINT [".workspaces/sky130_schematics/.devcontainer/entrypoint.sh"]

@@ -36,7 +36,7 @@ jobs:
           tags: ${{ env.TEST_TAG }}
       - name: Run the Container
         id: run
-        run: docker run
+        run: docker run ${{ env.TEST_TAG }}
 
   test-container:
     runs-on: ubuntu-latest

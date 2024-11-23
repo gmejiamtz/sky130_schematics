@@ -25,16 +25,18 @@ jobs:
         with:
           install: true
           driver-opts: network=host
+          driver: docker
       - name: Build the Container
         id: build
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
+          file: ../.devcontainer/Dockerfile
           tags: ${{ env.TEST_TAG }}
       - name: Run the Container
         id: run
-        run: docker run --rm ${{ env.TEST_TAG }}
+        run: docker run
 
   test-container:
     runs-on: ubuntu-latest
